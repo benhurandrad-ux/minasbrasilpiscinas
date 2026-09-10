@@ -1,0 +1,811 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Minas Brasil Piscinas | Limpeza, Reforma e Automação em BH</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Limpeza, manutenção, reforma, aquecimento e automação de piscinas em Belo Horizonte. Condições especiais para condomínios. Peça seu orçamento pelo WhatsApp.">
+<meta name="theme-color" content="#051B33">
+<link rel="icon" href="assets/icon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="preload" as="image" href="assets/hero.jpg">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --ink:#03233A;--ink-2:#04304F;--ink-3:#074266;--ink-deep:#021A2C;
+  --logo:#009EE2;--blue:#0A7FBF;--blue-700:#0B6FA8;--blue-500:#009EE2;--water:#009EE2;
+  --sun:#F7C841;--sun-600:#D9A616;--sun-300:#FFD86A;
+  --paper:#F4F7FA;--white:#FFFFFF;--mist:#E6EEF6;
+  --steel:#8FA6BD;--steel-dk:#4B6076;
+  --wa:#25D366;
+  --line-d:rgba(255,255,255,.08);--line-l:#DCE5EE;
+  --sans:'Instrument Sans',-apple-system,'SF Pro Display','Helvetica Neue',Arial,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+  --ease-out:cubic-bezier(.22,1,.36,1);--ease-inout:cubic-bezier(.77,0,.18,1);
+  --pad:clamp(20px,4.5vw,72px);--r:22px;--r2:16px;
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--ink);color:var(--mist);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:clip;line-height:1.5}
+::selection{background:var(--sun);color:#1A1400}
+h1,h2,h3{text-wrap:balance;letter-spacing:-.035em;line-height:1.04;font-weight:600}
+a{color:inherit;text-decoration:none}
+img,svg{max-width:100%;display:block}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--sun);outline-offset:3px;border-radius:6px}
+.label{font-family:var(--mono);font-size:clamp(11px,.9vw,12px);font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--sun-300)}
+.light .label{color:var(--blue)}
+.wrap{padding-inline:var(--pad);max-width:1280px;margin-inline:auto}
+.wrap-w{padding-inline:var(--pad);max-width:1440px;margin-inline:auto}
+section{position:relative}
+.dark{background:var(--ink);color:var(--mist)}
+.light{background:var(--paper);color:#0E1B2B}
+.center{text-align:center}
+.center p{margin-inline:auto}
+.h2{font-size:clamp(36px,5.2vw,68px);margin:14px 0 18px}
+.lead{font-size:clamp(17px,1.35vw,20px);max-width:640px;color:var(--steel)}
+.light .lead{color:var(--steel-dk)}
+.grain{position:absolute;inset:0;pointer-events:none;background-image:var(--grain);background-size:180px;opacity:.05}
+.seam{height:120px;background:linear-gradient(180deg,var(--paper),var(--ink))}
+.seam.up{background:linear-gradient(180deg,var(--ink),var(--paper))}
+
+/* ============ PRELOADER / INTRO ============ */
+#loader{position:fixed;inset:0;z-index:100;pointer-events:none}
+#loader .pn{position:absolute;left:0;right:0;height:50.5%;background:var(--ink)}
+#loader .pn.top{top:0}#loader .pn.bot{bottom:0}
+#loader .lg{position:fixed;left:50%;top:50%;width:min(460px,72vw);aspect-ratio:1069/429;transform:translate(-50%,-50%);will-change:transform,width}
+#loader .ly{position:absolute;inset:0;width:100%;height:100%;opacity:0}
+#nav .brand{opacity:0;transition:opacity .25s}
+#nav.brand-on .brand{opacity:1}
+
+/* ============ NAV ============ */
+#nav{position:fixed;top:0;left:0;right:0;z-index:80;height:66px;display:flex;align-items:center;padding-inline:var(--pad);border-bottom:1px solid transparent;opacity:0;transform:translateY(-8px);transition:background .4s,backdrop-filter .4s,border-color .4s,transform .5s cubic-bezier(.23,1,.32,1),opacity .8s var(--ease-out)}
+#nav.in{opacity:1;transform:none}
+#nav.hide{transform:translateY(-100%)}
+#nav.solid{background:rgba(3,35,58,.74);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-color:rgba(255,255,255,.06)}
+#nav .brand img{height:40px;width:auto}
+#nav ul{list-style:none;display:flex;gap:26px;margin-left:auto;margin-right:26px}
+#nav ul a{font-size:13.5px;font-weight:500;color:rgba(230,238,246,.82);transition:color .2s}
+#nav ul a:hover{color:#fff}
+#nav.on-light{color:#0E1B2B}
+#nav.on-light.solid{background:rgba(244,247,250,.84);border-color:rgba(0,0,0,.06)}
+#nav.on-light ul a{color:rgba(14,27,43,.75)}
+#nav.on-light ul a:hover{color:#0E1B2B}
+.pill{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:14.5px;padding:12px 20px;border-radius:999px;transition:transform .35s var(--ease-out),box-shadow .35s,background .25s,border-color .25s;white-space:nowrap;cursor:pointer}
+.pill svg{width:16px;height:16px;flex:none}
+.pill:hover{transform:translateY(-2px)}
+.pill:active{transform:scale(.97)!important}
+.pill-sun{background:linear-gradient(135deg,var(--sun-300),var(--sun) 55%,#D9A616);color:#1A1400;box-shadow:0 10px 30px -10px rgba(247,200,65,.6)}
+.pill-sun:hover{box-shadow:0 16px 40px -12px rgba(247,200,65,.85)}
+.pill-wa{background:var(--wa);color:#04140A;box-shadow:0 10px 30px -10px rgba(37,211,102,.6)}
+.pill-ghost{border:1px solid rgba(230,238,246,.24);color:var(--mist);background:rgba(255,255,255,.03)}
+.pill-ghost:hover{border-color:rgba(230,238,246,.55)}
+.light .pill-ghost{border-color:rgba(10,127,191,.22);color:var(--blue);background:#fff}
+.light .pill-ghost:hover{border-color:var(--blue)}
+.pill-blue{background:var(--blue);color:#fff;box-shadow:0 10px 30px -12px rgba(10,127,191,.6)}
+.pill-lg{font-size:16px;padding:16px 26px}
+#nav .pill{padding:9px 16px;font-size:13.5px}
+#burger{display:none;margin-left:auto;width:42px;height:42px;flex-direction:column;justify-content:center;align-items:center;gap:6px}
+#burger i{width:22px;height:2px;background:currentColor;transition:transform .35s,opacity .3s}
+#mob{position:fixed;inset:0;z-index:79;background:rgba(3,35,58,.97);backdrop-filter:blur(20px);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);gap:4px;transform:translateY(-100%);visibility:hidden;transition:transform .55s var(--ease-inout),visibility 0s .55s}
+#mob.open{transform:none;visibility:visible;transition-delay:0s}
+#mob a{font-size:clamp(28px,7vw,44px);font-weight:600;letter-spacing:-.03em;color:var(--mist);padding:8px 0;border-bottom:1px solid var(--line-d)}
+@media(max-width:960px){#nav ul,#nav .pill{display:none}#burger{display:flex}body.mopen #burger i:nth-child(1){transform:translateY(8px) rotate(45deg)}body.mopen #burger i:nth-child(2){opacity:0}body.mopen #burger i:nth-child(3){transform:translateY(-8px) rotate(-45deg)}body.mopen #nav{color:var(--mist)}}
+
+/* ============ HERO (split) ============ */
+#hero{min-height:100svh;display:flex;align-items:center;padding:120px 0 64px;overflow:hidden;isolation:isolate;background:radial-gradient(120% 90% at 80% 20%,var(--ink-3),var(--ink) 55%,var(--ink-deep))}
+#hero .glow{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.55}
+#hero .glow i{position:absolute;border-radius:50%;filter:blur(80px);opacity:0;will-change:transform}
+#hero .glow .g1{width:56vw;height:56vw;max-width:760px;max-height:760px;right:-8%;top:-10%;background:radial-gradient(circle,rgba(0,158,226,.5),rgba(10,127,191,.22) 40%,transparent 70%)}
+#hero .glow .g2{width:40vw;height:40vw;max-width:520px;max-height:520px;left:-12%;bottom:-18%;background:radial-gradient(circle,rgba(247,200,65,.28),transparent 65%)}
+#hero .glow.in i{animation:gin 2.2s var(--ease-out) forwards}
+#hero .glow.in .g2{animation-delay:.3s}
+@keyframes gin{to{opacity:1}}
+#hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,80px);align-items:center;width:100%}
+#hero .label{opacity:0}
+#hero h1{font-size:clamp(36px,4.9vw,70px);letter-spacing:-.045em;line-height:.98;margin:18px 0 24px;max-width:22ch}
+#hero h1 .l{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.06em}
+#hero h1 .l span{display:block;transform:translateY(110%)}
+#hero h1 .dim{color:rgba(230,238,246,.5)}
+#hero .sub{max-width:520px;font-size:clamp(17px,1.4vw,20px);color:rgba(230,238,246,.78);opacity:0}
+#hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;opacity:0}
+#hero .meta{margin-top:clamp(36px,5vh,64px);padding-top:20px;border-top:1px solid var(--line-d);display:flex;gap:28px;flex-wrap:wrap;font-size:14px;color:var(--steel);opacity:0}
+#hero .meta b{display:block;color:var(--mist);font-weight:600;font-size:15px}
+.hframe{position:relative;max-width:520px;margin-left:auto;width:100%;opacity:0;transform:translateY(24px) scale(.98)}
+.hframe .ph{position:relative;aspect-ratio:4/5;border-radius:28px;overflow:hidden;background:var(--ink-3);border:1px solid rgba(255,255,255,.08);box-shadow:0 50px 100px -40px rgba(0,0,0,.7)}
+.hframe .ph img{width:100%;height:100%;object-fit:cover;filter:saturate(.92);transform:scale(1.04)}
+.hframe .tag{position:absolute;left:18px;bottom:18px;z-index:2;background:rgba(3,35,58,.72);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 16px}
+.hframe .tag b{display:block;font-size:15px;color:#fff;letter-spacing:-.01em}
+.hframe .tag span{font-size:12.5px;color:var(--steel)}
+@media(max-width:900px){#hero{padding-top:104px}#hero .wrap{grid-template-columns:1fr}.hframe{max-width:440px;margin-left:0}#hero h1{font-size:clamp(36px,9.6vw,52px)}#hero .meta{gap:18px}}
+
+/* ============ SERVIÇOS ============ */
+#servicos{padding:clamp(80px,11vw,140px) 0}
+#servicos h2{font-size:clamp(36px,5.2vw,68px);margin:0 0 18px;max-width:14ch}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.svc{background:var(--white);border-radius:var(--r);padding:12px 12px 22px;border:1px solid rgba(10,127,191,.06);box-shadow:0 20px 50px -30px rgba(10,127,191,.28);transition:transform .5s var(--ease-out),box-shadow .5s;display:flex;flex-direction:column}
+.svc:hover{transform:translateY(-5px);box-shadow:0 34px 60px -30px rgba(10,127,191,.4)}
+.svc .ph{aspect-ratio:4/3;border-radius:var(--r2);overflow:hidden;background:var(--mist)}
+.svc .ph img{width:100%;height:100%;object-fit:cover;filter:saturate(.85);transition:transform 1.2s var(--ease-out)}
+.svc:hover .ph img{transform:scale(1.05)}
+.svc .body{padding:18px 8px 0}
+.svc h3{font-size:21px;margin-bottom:8px}
+.svc p{font-size:14.5px;color:var(--steel-dk)}
+.svc .body>div{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.svc .body>div span{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:6px 10px;border-radius:999px;border:1px solid rgba(10,127,191,.16);color:var(--blue)}
+@media(max-width:1000px){.grid3{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.grid3{grid-template-columns:1fr}}
+
+/* ============ REFORMA (scrubber) ============ */
+#reforma{padding:clamp(80px,11vw,140px) 0;overflow:hidden}
+#reforma h2{font-size:clamp(36px,5.2vw,68px);margin:14px 0 18px;max-width:14ch}
+.rf{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);margin-top:48px;align-items:start}
+.rf>*{min-width:0}
+.stage{position:relative;max-width:560px;margin-inline:auto;width:100%}
+.stage .fr{position:relative;aspect-ratio:3/4;border-radius:var(--r);overflow:hidden;background:var(--ink-3);border:1px solid var(--line-d);box-shadow:0 40px 80px -40px rgba(0,0,0,.7)}
+.stage .fr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .22s ease}
+.stage .fr img.on{opacity:1}
+.stage .fr .selo{position:absolute;left:16px;top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:8px 12px;border-radius:999px;background:rgba(3,35,58,.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);color:#fff;transition:background .3s,color .3s}
+.stage .fr .selo.fim{background:var(--sun);color:#1A1400;border-color:transparent}
+.stage .scrub{margin-top:18px;display:flex;align-items:center;gap:12px}
+.stage .scrub button{width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);display:grid;place-items:center;flex:none;transition:background .2s}
+.stage .scrub button:hover{background:rgba(255,255,255,.1)}
+.stage .scrub button svg{width:16px;height:16px}
+.stage .scrub input[type=range]{flex:1;accent-color:var(--sun);height:44px;cursor:pointer}
+.stage .cap{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-top:6px}
+.etapas{position:sticky;top:96px}
+.etapas p.lead{margin-bottom:26px}
+.et{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:16px 0;border-top:1px solid var(--line-d);opacity:.4;transition:opacity .4s}
+.et:last-child{border-bottom:1px solid var(--line-d)}
+.et.on{opacity:1}
+.et.done{opacity:.75}
+.et i{width:40px;height:40px;border-radius:12px;border:1px solid rgba(255,255,255,.12);display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:var(--steel);transition:background .3s,color .3s,border-color .3s}
+.et.on i{background:var(--sun);color:#1A1400;border-color:transparent}
+.et.done i{background:rgba(247,200,65,.16);color:var(--sun-300);border-color:transparent}
+.et h3{font-size:18px;margin-bottom:4px;letter-spacing:-.02em}
+.et p{font-size:14.5px;color:var(--steel)}
+@media(max-width:900px){.rf{grid-template-columns:1fr}.etapas{position:static}}
+
+/* ============ VISITA (timeline + ficha) ============ */
+#visita{padding:clamp(80px,11vw,140px) 0}
+#visita .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,80px);align-items:start}
+#visita h2{font-size:clamp(36px,4.8vw,62px);margin:0 0 18px}
+#visita .sticky{position:sticky;top:110px}
+.ficha{background:var(--white);border-radius:var(--r);border:1px solid rgba(10,127,191,.06);box-shadow:0 20px 50px -30px rgba(10,127,191,.3);padding:26px 26px 22px}
+.ficha .fh{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1px solid var(--line-l)}
+.ficha .fh b{font-size:16px;letter-spacing:-.01em}
+.ficha .fh span{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-dk)}
+.ficha ul{list-style:none;margin-top:8px}
+.ficha li{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line-l);font-size:15px;color:var(--steel-dk);transition:color .35s}
+.ficha li:last-child{border-bottom:0}
+.ficha li i{width:22px;height:22px;border-radius:7px;border:1.5px solid #C9D6E2;display:grid;place-items:center;flex:none;transition:background .3s,border-color .3s}
+.ficha li i svg{width:12px;height:12px;stroke:#1A1400;stroke-width:3;fill:none;opacity:0;transform:scale(.5);transition:opacity .25s,transform .35s var(--ease-out)}
+.ficha li.ok{color:#0E1B2B}
+.ficha li.ok i{background:var(--sun);border-color:var(--sun)}
+.ficha li.ok i svg{opacity:1;transform:none}
+.ficha .ph{margin-top:16px;aspect-ratio:16/9;border-radius:var(--r2);overflow:hidden}
+.ficha .ph img{width:100%;height:100%;object-fit:cover}
+.tl{position:relative;margin-top:8px}
+.tl::before{content:'';position:absolute;left:14px;top:0;bottom:0;width:2px;background:var(--line-l)}
+.tl .prog{position:absolute;left:14px;top:0;width:2px;background:linear-gradient(180deg,var(--sun-300),var(--sun-600));height:0}
+.step{position:relative;padding:0 0 0 52px;opacity:.35;transform:translateY(20px);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out)}
+.step.on{opacity:1;transform:none}
+.step+.step{margin-top:40px}
+.step::before{content:'';position:absolute;left:8px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:3px solid var(--line-l);transition:border-color .4s,background .4s}
+.step.on::before{background:var(--sun);border-color:var(--sun-300);box-shadow:0 0 0 6px rgba(247,200,65,.2)}
+.step .n{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);background:rgba(10,127,191,.1);padding:5px 10px;border-radius:999px;margin-bottom:10px}
+.step h3{font-size:22px;margin-bottom:6px}
+.step p{font-size:15px;color:var(--steel-dk);max-width:44ch}
+#visita .end{margin-top:44px;padding-left:52px}
+@media(max-width:900px){#visita .wrap{grid-template-columns:1fr}#visita .sticky{position:relative;top:0}.ficha{max-width:520px}}
+
+/* ============ CALCULADORA ============ */
+#calc{padding:clamp(80px,11vw,140px) 0;background:linear-gradient(180deg,var(--ink) 0%,var(--ink-2) 50%,var(--ink-deep) 100%)}
+#calc h2{font-size:clamp(36px,5.2vw,68px);margin:14px 0 18px}
+.sim{display:grid;grid-template-columns:400px 1fr;gap:16px;margin-top:52px}
+.sim>*{min-width:0;max-width:100%}
+.simc{background:rgba(7,38,68,.75);border:1px solid var(--line-d);border-radius:var(--r);padding:clamp(24px,3vw,36px);backdrop-filter:blur(8px)}
+.simc .q{font-size:14px;font-weight:600;color:var(--mist);margin:22px 0 10px;display:block}
+.simc .q:first-child{margin-top:0}
+.seg3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.seg3 label{position:relative;cursor:pointer}
+.seg3 input{position:absolute;opacity:0;inset:0}
+.seg3 span{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 8px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.03);font-size:13px;font-weight:600;transition:border-color .25s,background .25s}
+.seg3 span svg{width:34px;height:26px;stroke:currentColor;fill:none;stroke-width:1.6}
+.seg3 input:checked+span{border-color:var(--sun);background:rgba(247,200,65,.1)}
+.seg3 input:focus-visible+span{outline:2px solid var(--sun);outline-offset:2px}
+.fld{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px}
+.fld label{font-size:13.5px;color:var(--steel)}
+.fld output{font-family:var(--mono);font-size:15px;color:#fff;font-variant-numeric:tabular-nums}
+input[type=range].rng{width:100%;accent-color:var(--sun);height:32px;cursor:pointer;margin-bottom:8px}
+.simr{display:flex;flex-direction:column;gap:16px;padding:14px;background:rgba(7,38,68,.4);border:1px solid var(--line-d);border-radius:var(--r)}
+.pool{position:relative;flex:1;min-height:360px;border-radius:var(--r2);border:1px solid rgba(255,255,255,.08);overflow:hidden;isolation:isolate;background:var(--ink-deep);display:grid;place-items:center}
+.pool svg{width:100%;height:auto;max-height:420px}
+.pool .grid{stroke:rgba(255,255,255,.07)}
+.pool .wat{fill:url(#wg);stroke:rgba(255,255,255,.55);stroke-width:1.4}
+.pool .dimline{stroke:rgba(255,212,102,.6);stroke-width:1;stroke-dasharray:3 4}
+.pool .dim{font-family:var(--mono);font-size:12px;fill:var(--sun-300);letter-spacing:.08em}
+.pool .pcap{position:absolute;left:16px;top:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(230,238,246,.6)}
+.res{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:end;padding:6px 10px 0}
+.res .big{font-size:clamp(40px,4.6vw,64px);font-weight:600;letter-spacing:-.045em;line-height:1;color:var(--sun-300);font-variant-numeric:tabular-nums}
+.res .big small{font-size:.38em;color:var(--mist);letter-spacing:0;margin-left:8px;font-weight:500}
+.res .line{font-family:var(--mono);font-size:13px;color:var(--mist);margin-top:10px;letter-spacing:.04em}
+.res .note{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);margin-top:8px}
+.res .cls{text-align:right}
+.res .cls b{display:block;font-size:22px;letter-spacing:-.02em;color:#fff}
+.res .cls span{font-size:13px;color:var(--steel)}
+@media(max-width:1000px){.sim{grid-template-columns:1fr}.pool{min-height:300px}}
+@media(max-width:520px){.res{grid-template-columns:1fr}.res .cls{text-align:left}}
+
+/* ============ PARA QUEM (casa / condomínio) ============ */
+#paraquem{padding:clamp(80px,11vw,140px) 0}
+#paraquem h2{font-size:clamp(36px,5.2vw,68px);margin:0 0 18px;max-width:14ch}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+.pane{border-radius:var(--r);padding:clamp(26px,3.2vw,44px);display:flex;flex-direction:column;min-height:460px}
+.pane.casa{background:var(--white);border:1px solid rgba(10,127,191,.06);box-shadow:0 20px 50px -30px rgba(10,127,191,.28)}
+.pane.cond{background:var(--blue-700);color:#fff}
+.pane h3{font-size:clamp(28px,3vw,38px);margin-bottom:8px}
+.pane>p{font-size:15.5px;color:var(--steel-dk);max-width:46ch}
+.pane.cond>p{color:rgba(255,255,255,.8)}
+.pane .rows{margin:24px 0 28px;border-top:1px solid var(--line-l);flex:1}
+.pane.cond .rows{border-color:rgba(255,255,255,.14)}
+.pane .row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:13px 0;border-bottom:1px solid var(--line-l);font-size:15px}
+.pane.cond .row{border-color:rgba(255,255,255,.14)}
+.pane .row em{font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel-dk);white-space:nowrap}
+.pane.cond .row em{color:rgba(255,255,255,.6)}
+.pane .pill{align-self:flex-start}
+@media(max-width:820px){.duo{grid-template-columns:1fr}.pane{min-height:auto}}
+
+/* ============ PROVA ============ */
+#prova{padding:clamp(80px,11vw,140px) 0}
+#prova h2{font-size:clamp(36px,5.2vw,68px);margin:0}
+#prova .g{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.quote{background:var(--white);color:#0E1B2B;border-radius:var(--r);padding:30px;box-shadow:0 30px 60px -40px rgba(0,0,0,.6);display:flex;flex-direction:column;gap:16px}
+.quote .stars{display:flex;gap:3px}
+.quote .stars svg{width:16px;height:16px;color:var(--sun);opacity:0;transform:scale(.4)}
+.quote.in .stars svg{animation:pop .5s var(--ease-out) forwards}
+.quote.in .stars svg:nth-child(2){animation-delay:.08s}.quote.in .stars svg:nth-child(3){animation-delay:.16s}.quote.in .stars svg:nth-child(4){animation-delay:.24s}.quote.in .stars svg:nth-child(5){animation-delay:.32s}
+@keyframes pop{60%{transform:scale(1.2)}to{opacity:1;transform:scale(1)}}
+.quote p{font-size:16px;color:#1F2F3A;flex:1}
+.quote em{font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-dk)}
+.quote em b{display:block;font-family:var(--sans);font-size:14px;letter-spacing:-.01em;text-transform:none;color:#0E1B2B;margin-bottom:4px}
+#prova .gl{margin-top:28px;display:flex;align-items:center;gap:12px;justify-content:center;font-size:14px;color:var(--steel)}
+#prova .gl a{color:var(--mist);text-decoration:underline;text-underline-offset:3px}
+@media(max-width:900px){#prova .g{grid-template-columns:1fr}}
+
+/* ============ EMPRESA + CONTATO ============ */
+#contato{padding:clamp(90px,12vw,150px) 0;overflow:hidden;isolation:isolate;background:var(--blue-700)}
+#contato .bg{position:absolute;inset:0;z-index:-1}
+#contato .bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(.6)}
+#contato .bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,111,168,.97) 0%,rgba(11,111,168,.88) 50%,rgba(11,111,168,.7) 100%)}
+#contato .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,90px);align-items:start}
+#contato h2{font-size:clamp(38px,5vw,66px);margin:14px 0 18px}
+#contato .lead{color:rgba(255,255,255,.78)}
+#contato .sobre{margin-top:26px;color:rgba(255,255,255,.82);font-size:16px;max-width:52ch}
+#contato .sobre p+p{margin-top:12px}
+#contato .lines{margin-top:28px;display:flex;flex-direction:column;gap:12px;font-size:15.5px}
+#contato .lines a,#contato .lines span{display:flex;align-items:center;gap:12px;color:#fff}
+#contato .lines svg{width:18px;height:18px;flex:none;color:var(--sun-300)}
+.form{background:var(--white);color:#0E1B2B;border-radius:var(--r);padding:clamp(24px,3vw,36px);box-shadow:0 40px 80px -40px rgba(0,0,0,.6)}
+.form h3{font-size:22px;margin-bottom:6px}
+.form>p{font-size:14px;color:var(--steel-dk);margin-bottom:20px}
+.form .f{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.form .f2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form label{font-size:13px;font-weight:600;color:#1F2F3A}
+.form input,.form select,.form textarea{height:48px;border-radius:12px;border:1px solid #C9D6E2;background:#fff;padding:0 14px;font-size:15px;color:#0E1B2B;width:100%;transition:border-color .2s,box-shadow .2s}
+.form textarea{height:auto;min-height:88px;padding:12px 14px;resize:vertical}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(10,127,191,.15)}
+.form input::placeholder,.form textarea::placeholder{color:#6F8597}
+.form .err{font-size:12.5px;color:#B42318;display:none}
+.form .f.bad input,.form .f.bad select{border-color:#B42318}
+.form .f.bad .err{display:block}
+.form .pill{width:100%;justify-content:center;margin-top:6px}
+.form .tiny{font-size:12px;color:var(--steel-dk);text-align:center;margin-top:12px}
+@media(max-width:900px){#contato .wrap{grid-template-columns:1fr}}
+@media(max-width:520px){.form .f2{grid-template-columns:1fr}}
+
+/* ============ FOOTER ============ */
+footer{padding:44px 0 36px;border-top:1px solid var(--line-d);background:var(--ink-deep)}
+footer .top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px;font-size:14px;color:var(--steel)}
+footer .top img{height:40px;width:auto;margin-bottom:14px}
+footer .top b{display:block;color:var(--mist);font-weight:600;margin-bottom:10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+footer .top a{display:block;padding:3px 0;transition:color .2s}
+footer .top a:hover{color:#fff}
+footer .bottom{margin-top:34px;padding-top:20px;border-top:1px solid var(--line-d);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--steel)}
+@media(max-width:820px){footer .top{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){footer .top{grid-template-columns:1fr}}
+
+/* floating WA */
+#wa-fab{position:fixed;right:22px;bottom:22px;z-index:85;width:58px;height:58px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 14px 40px -10px rgba(37,211,102,.8);transform:scale(0);transition:transform .6s var(--ease-out)}
+#wa-fab.on{transform:scale(1)}
+#wa-fab:hover{transform:scale(1.06)}
+#wa-fab svg{width:27px;height:27px;color:#04140A}
+
+/* reveal system */
+.wl{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;margin-bottom:-.08em}
+.wl>span{display:inline-block;will-change:transform}
+.js .split .wl>span{transform:translateY(110%)}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}.rv-d4{transition-delay:.32s}
+.svc:active{transform:scale(.985)!important;transition:transform .12s cubic-bezier(.23,1,.32,1)}
+
+</style>
+</head>
+<body>
+
+<div id="loader" aria-hidden="true">
+  <div class="pn top"></div><div class="pn bot"></div>
+  <div class="lg" id="lg"><img class="ly em" src="assets/lg_m.png" alt=""><img class="ly arc" src="assets/lg_arc.png" alt=""><img class="ly mi" src="assets/lg_minas.png" alt=""><img class="ly br" src="assets/lg_brasil.png" alt=""><img class="ly pi" src="assets/lg_pisc.png" alt=""></div>
+</div>
+
+<header id="nav">
+  <a class="brand" href="#hero" aria-label="Minas Brasil Piscinas"><img id="navlogo" src="assets/logo_color.png" alt="Minas Brasil Piscinas"></a>
+  <ul>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#reforma">Reforma</a></li>
+    <li><a href="#manutencao">Manutenção</a></li>
+    <li><a href="#calc">Calculadora</a></li>
+    <li><a href="#paraquem">Condomínios</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <a class="pill pill-sun" href="https://wa.me/5531993515020?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Minas%20Brasil%20Piscinas%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir orçamento</a>
+  <button id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+</header>
+<div id="mob">
+  <a href="#servicos">Serviços</a><a href="#reforma">Reforma</a><a href="#manutencao">Manutenção</a><a href="#calc">Calculadora</a><a href="#paraquem">Condomínios</a><a href="#contato">Contato</a>
+  <a href="https://wa.me/5531993515020?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Minas%20Brasil%20Piscinas%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener" style="color:var(--wa)">Fazer meu orçamento agora</a>
+</div>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section id="hero" class="dark">
+  <div class="grain"></div>
+  <div class="glow" id="glow"><i class="g1"></i><i class="g2"></i></div>
+  <div class="wrap">
+    <div class="inner">
+      <div class="label">Belo Horizonte, MG · piscinas de casas e condomínios</div>
+      <h1>
+        <span class="l"><span>Especialistas em limpeza</span></span>
+        <span class="l"><span class="dim">e manutenção de piscinas.</span></span>
+      </h1>
+      <p class="sub">Cuidamos da água antes que ela vire verde. Você só entra na piscina. Casas e condomínios em BH e região.</p>
+      <div class="cta">
+        <a class="pill pill-wa pill-lg" id="herocta" href="https://wa.me/5531993515020?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Minas%20Brasil%20Piscinas%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.7.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+          Fazer meu orçamento agora
+        </a>
+        <a class="pill pill-ghost pill-lg" href="#manutencao">Ver como funciona a manutenção</a>
+      </div>
+      <div class="meta" id="hmeta">
+        <div><b>Seg a sex, 8h às 18h</b>resposta pelo WhatsApp</div>
+        <div><b>BH e região</b>casas e condomínios</div>
+        <div><b>Orçamento fechado</b>antes de começar</div>
+      </div>
+    </div>
+    <div class="hframe" id="hframe">
+      <div class="ph"><img src="assets/hero.jpg" alt="Piscina de fibra azul reformada pela Minas Brasil, com cascata de aço" fetchpriority="high"></div>
+      <div class="tag"><b>Reforma entregue em BH</b><span>fibra recuperada, cascata e água tratada</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="seam up"></div>
+
+<!-- ============ SERVIÇOS ============ -->
+<section id="servicos" class="light">
+  <div class="wrap">
+    <h2 class="split">tudo que a piscina precisa,<br>em uma equipe só.</h2>
+    <p class="lead rv">Do projeto à visita de rotina. Você fala com uma empresa e resolve tudo, sem intermediar três fornecedores.</p>
+    <div class="grid3">
+      <div class="svc rv"><div class="ph"><img src="assets/s_limpeza.jpg" alt="Piscina com água limpa e boia" loading="lazy"></div><div class="body"><h3>Limpeza e manutenção</h3><p>Aspiração de fundo, controle de pH, cloração, escovação de bordas e verificação de bomba e filtro, em visitas com dia marcado.</p><div><span>Semanal</span><span>Quinzenal</span><span>Condomínio</span></div></div></div>
+      <div class="svc rv rv-d1"><div class="ph"><img src="assets/s_construcao.jpg" alt="Piscina de alvenaria com pastilhas azuis" loading="lazy"></div><div class="body"><h3>Construção e reforma</h3><p>Piscina nova em alvenaria com pastilhas, vinil ou fibra. Na reforma, reparamos a estrutura, trocamos o acabamento e atualizamos o visual.</p><div><span>Pastilha</span><span>Vinil</span><span>Fibra</span></div></div></div>
+      <div class="svc rv rv-d2"><div class="ph"><img src="assets/s_aquecimento.jpg" alt="Placas de aquecimento solar ao lado de piscina" loading="lazy"></div><div class="body"><h3>Aquecimento</h3><p>Solar, bomba de calor ou gás. Indicamos o sistema pelo tamanho da piscina, pelo uso e pela conta de energia que você aceita pagar.</p><div><span>Solar</span><span>Bomba de calor</span><span>Gás</span></div></div></div>
+      <div class="svc rv"><div class="ph"><img src="assets/s_iluminacao.jpg" alt="Piscina coberta com iluminação LED azul" loading="lazy"></div><div class="body"><h3>Iluminação</h3><p>LED subaquático e perimetral com troca de cor. Instalação nova ou substituição de luminárias antigas, com a parte elétrica revisada.</p><div><span>LED RGB</span><span>Subaquática</span><span>Perimetral</span></div></div></div>
+      <div class="svc rv rv-d1"><div class="ph"><img src="assets/s_automacao.jpg" alt="Vista de cima de piscina com borda infinita" loading="lazy"></div><div class="body"><h3>Automação</h3><p>Bomba, iluminação, aquecimento e filtragem controlados pelo celular, Alexa ou Google Home. Você liga a piscina antes de chegar em casa.</p><div><span>App</span><span>Alexa</span><span>Google Home</span></div></div></div>
+      <div class="svc rv rv-d2"><div class="ph"><img src="assets/s_maquinas.jpg" alt="Vista aérea de piscina com hidromassagem" loading="lazy"></div><div class="body"><h3>Casa de máquinas</h3><p>Projeto e execução de bomba, filtro, registros e clorador. Manutenção preventiva e corretiva para o sistema não parar no verão.</p><div><span>Bomba e filtro</span><span>Clorador</span><span>Preventiva</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="seam"></div>
+
+<!-- ============ REFORMA (scrubber) ============ -->
+<section id="reforma" class="dark">
+  <div class="wrap">
+    <div class="label rv">Obra real</div>
+    <h2 class="split">uma reforma real,<br>sem filtro.</h2>
+    <div class="rf">
+      <div class="stage rv" id="stage">
+        <div class="fr" id="fr">
+          <img src="assets/seq01.jpg" alt="Piscina antes da reforma, com água verde e fibra manchada" class="on">
+          <img data-src="assets/seq02.jpg" alt=""><img data-src="assets/seq03.jpg" alt=""><img data-src="assets/seq04.jpg" alt=""><img data-src="assets/seq05.jpg" alt=""><img data-src="assets/seq06.jpg" alt=""><img data-src="assets/seq07.jpg" alt=""><img data-src="assets/seq08.jpg" alt=""><img data-src="assets/seq09.jpg" alt=""><img data-src="assets/seq10.jpg" alt=""><img data-src="assets/seq11.jpg" alt=""><img data-src="assets/seq12.jpg" alt=""><img data-src="assets/seq13.jpg" alt=""><img data-src="assets/seq14.jpg" alt=""><img data-src="assets/seq15.jpg" alt=""><img data-src="assets/seq16.jpg" alt="Piscina depois da reforma, azul, cheia e com cascata">
+          <span class="selo" id="selo">Antes</span>
+        </div>
+        <div class="scrub">
+          <button type="button" id="sprev" aria-label="Foto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <input type="range" id="srng" min="0" max="15" value="0" step="1" aria-label="Etapa da reforma">
+          <button type="button" id="snext" aria-label="Próxima foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+        <div class="cap"><span>Como chegou</span><span id="scount">Foto 1 de 16</span><span>Como foi entregue</span></div>
+      </div>
+      <div class="etapas rv rv-d2" id="etapas">
+        <p class="lead">Foto de como a piscina chegou e de como foi entregue. Mesmo local, mesma piscina. Arraste a barra para acompanhar a obra.</p>
+        <div class="et on" data-from="0" data-to="4"><i>1</i><div><h3>Como a piscina chegou</h3><p>Água verde, fibra manchada, piscina parada há semanas.</p></div></div>
+        <div class="et" data-from="5" data-to="6"><i>2</i><div><h3>Esvaziamento e limpeza</h3><p>Piscina esvaziada, fibra escovada e avaliada ponto a ponto.</p></div></div>
+        <div class="et" data-from="7" data-to="7"><i>3</i><div><h3>Reparo e novo acabamento</h3><p>Estrutura reparada e acabamento novo aplicado antes de encher.</p></div></div>
+        <div class="et" data-from="8" data-to="10"><i>4</i><div><h3>Água nova e tratada</h3><p>Enchimento, cascata instalada, pH e cloro balanceados.</p></div></div>
+        <div class="et" data-from="11" data-to="15"><i>5</i><div><h3>Entrega</h3><p>Acabamento novo, água azul e limpa, piscina em uso.</p></div></div>
+        <div style="margin-top:26px"><a class="pill pill-wa pill-lg" href="https://wa.me/5531993515020?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento%20de%20reforma%20de%20piscina." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.7.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Fazer meu orçamento agora</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="seam up"></div>
+
+<!-- ============ MANUTENÇÃO (timeline + ficha) ============ -->
+<section id="manutencao" class="light">
+  <div id="visita">
+  <div class="wrap">
+    <div>
+      <h2 class="split">como funciona<br>a manutenção.</h2>
+      <p class="lead rv">Você marca uma vez. Depois disso a piscina entra no cronograma e a gente aparece no dia combinado.</p>
+      <div class="tl" id="tl">
+        <div class="prog" id="tlprog"></div>
+        <div class="step" data-ok="i1"><span class="n">Primeira visita</span><h3>Diagnóstico</h3><p>Vamos até a piscina, medimos a água e conferimos bomba, filtro e casa de máquinas. Você recebe o orçamento sem compromisso.</p></div>
+        <div class="step" data-ok=""><span class="n">Cronograma</span><h3>Plano de visitas</h3><p>Definimos a frequência pelo tamanho da piscina, pelo uso e pela estação. Dia e horário ficam fixos no cronograma.</p></div>
+        <div class="step" data-ok="i2 i3 i4 i5 i6"><span class="n">Cada visita</span><h3>O que acontece na visita</h3><p>Aspiração de fundo, escovação de bordas, ajuste de pH, cloração e checagem de bomba e filtro.</p></div>
+        <div class="step" data-ok="i7"><span class="n">Ao final</span><h3>Aviso pelo WhatsApp</h3><p>Você recebe no WhatsApp o que foi feito, os parâmetros da água e qualquer alerta de peça ou equipamento.</p></div>
+      </div>
+      <div class="end rv"><a class="pill pill-wa pill-lg" href="https://wa.me/5531993515020?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento%20de%20limpeza%20e%20manuten%C3%A7%C3%A3o%20de%20piscina." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.7.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Fazer meu orçamento agora</a></div>
+    </div>
+    <div class="sticky">
+      <div class="ficha rv rv-d2" id="ficha">
+        <div class="fh"><b>Ficha da visita</b><span>Minas Brasil</span></div>
+        <ul>
+          <li id="i1"><i><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></i>Medição de pH e cloro</li>
+          <li id="i2"><i><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></i>Aspiração de fundo</li>
+          <li id="i3"><i><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></i>Escovação de bordas e degraus</li>
+          <li id="i4"><i><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></i>Limpeza de cestos e pré-filtro</li>
+          <li id="i5"><i><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></i>Checagem de bomba e filtro</li>
+          <li id="i6"><i><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></i>Ajuste químico e cloração</li>
+          <li id="i7"><i><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></i>Relatório enviado no WhatsApp</li>
+        </ul>
+        <div class="ph"><img src="assets/s_degraus.jpg" alt="Degraus de piscina com água cristalina" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<div class="seam"></div>
+
+<!-- ============ CALCULADORA ============ -->
+<section id="calc" class="dark">
+  <div class="wrap-w">
+    <div class="center">
+      <div class="label rv">Calculadora</div>
+      <h2 class="split">quantos litros tem<br>a sua piscina?</h2>
+      <p class="lead rv rv-d2">Informe o formato e as medidas. O volume define produto, tempo de visita e o orçamento. A primeira visita confirma as medidas.</p>
+    </div>
+    <div class="sim rv rv-d3">
+      <div class="simc">
+        <span class="q">Formato</span>
+        <div class="seg3" id="shape">
+          <label><input type="radio" name="shape" value="rect" checked><span><svg viewBox="0 0 34 26"><rect x="2" y="3" width="30" height="20" rx="2"/></svg>Retangular</span></label>
+          <label><input type="radio" name="shape" value="round"><span><svg viewBox="0 0 34 26"><circle cx="17" cy="13" r="11"/></svg>Redonda</span></label>
+          <label><input type="radio" name="shape" value="oval"><span><svg viewBox="0 0 34 26"><ellipse cx="17" cy="13" rx="15" ry="9"/></svg>Oval</span></label>
+        </div>
+        <span class="q">Medidas</span>
+        <div class="fld"><label for="cl" id="cll">Comprimento</label><output id="clo">8,0 m</output></div>
+        <input type="range" class="rng" id="cl" min="2" max="25" step="0.5" value="8">
+        <div id="cwwrap">
+          <div class="fld"><label for="cw">Largura</label><output id="cwo">4,0 m</output></div>
+          <input type="range" class="rng" id="cw" min="2" max="15" step="0.5" value="4">
+        </div>
+        <div class="fld"><label for="cd">Profundidade média</label><output id="cdo">1,40 m</output></div>
+        <input type="range" class="rng" id="cd" min="0.8" max="3" step="0.1" value="1.4">
+        <span class="q">Uso</span>
+        <div class="seg3" id="use" style="grid-template-columns:1fr 1fr">
+          <label><input type="radio" name="use" value="casa" checked><span>Casa</span></label>
+          <label><input type="radio" name="use" value="cond"><span>Condomínio</span></label>
+        </div>
+      </div>
+      <div class="simr">
+        <div class="pool">
+          <span class="pcap">Vista de cima, em escala</span>
+          <svg viewBox="0 0 520 400" id="psvg" aria-hidden="true">
+            <defs><linearGradient id="wg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2EB7E0" stop-opacity=".85"/><stop offset="1" stop-color="#1C5FB8" stop-opacity=".9"/></linearGradient></defs>
+            <g class="grid" id="pgrid"></g>
+            <g id="pshape"></g>
+            <g id="pdims"></g>
+          </svg>
+        </div>
+        <div class="res">
+          <div>
+            <div class="big"><span id="rlit">44.800</span><small>litros</small></div>
+            <div class="line" id="rline">8,0 x 4,0 m · 1,40 m de profundidade · 44,8 m³</div>
+            <div class="note">estimativa · a visita confirma as medidas</div>
+          </div>
+          <div class="cls"><b id="rcls">Piscina média</b><span id="rsug">visita semanal na manutenção</span></div>
+        </div>
+        <a class="pill pill-wa pill-lg" id="calccta" href="https://wa.me/5531993515020" target="_blank" rel="noopener" style="justify-content:center"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.7.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Fazer meu orçamento agora</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="seam up"></div>
+
+<!-- ============ PARA QUEM ============ -->
+<section id="paraquem" class="light">
+  <div class="wrap">
+    <h2 class="split">para a casa<br>e para o condomínio.</h2>
+    <p class="lead rv">A piscina é a mesma. O que muda é a frequência, o registro e quem responde por ela.</p>
+    <div class="duo">
+      <div class="pane casa rv">
+        <h3>Casa</h3>
+        <p>Você quer a piscina pronta no fim de semana sem passar a semana cuidando dela.</p>
+        <div class="rows">
+          <div class="row"><span>Visita com dia e horário fixos</span><em>Rotina</em></div>
+          <div class="row"><span>Produtos inclusos no plano</span><em>Químicos</em></div>
+          <div class="row"><span>Aviso no WhatsApp após cada visita</span><em>Relatório</em></div>
+          <div class="row"><span>Reparo de bomba, filtro e luz quando precisar</span><em>Equipamentos</em></div>
+        </div>
+        <a class="pill pill-blue" href="https://wa.me/5531993515020?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento%20de%20limpeza%20e%20manuten%C3%A7%C3%A3o%20de%20piscina." target="_blank" rel="noopener">Orçar manutenção da casa</a>
+      </div>
+      <div class="pane cond rv rv-d1">
+        <h3>Condomínio</h3>
+        <p>Piscina coletiva exige frequência maior, registro do que foi feito e um responsável que o síndico consegue chamar.</p>
+        <div class="rows">
+          <div class="row"><span>Visitas programadas com frequência maior</span><em>Rotina</em></div>
+          <div class="row"><span>Contato direto com a administração</span><em>Síndico</em></div>
+          <div class="row"><span>Registro de cada visita e dos parâmetros da água</span><em>Registro</em></div>
+          <div class="row"><span>Condições especiais no contrato</span><em>Contrato</em></div>
+        </div>
+        <a class="pill pill-wa" href="https://wa.me/5531993515020?text=Ol%C3%A1%2C%20falo%20por%20um%20condom%C3%ADnio%20e%20quero%20um%20or%C3%A7amento%20de%20manuten%C3%A7%C3%A3o%20da%20piscina%20coletiva.%20Vim%20pelo%20site." target="_blank" rel="noopener">Orçar plano do condomínio</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="seam"></div>
+
+<!-- ============ PROVA ============ -->
+<section id="prova" class="dark">
+  <div class="wrap">
+    <h2 class="split">quem já contratou.</h2>
+    <div class="g">
+      <div class="quote rv"><div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div><p>“Excelente empresa, cumpriu tudo que foi combinado. Voltarei a fazer negócios.”</p><em><b>André Filipe Novaes da Silva</b>Avaliação no Google</em></div>
+      <div class="quote rv rv-d1"><div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div><p>“Empresa séria, atendimento excelente, muito prestativos. Só tenho elogios, da contratação à prestação do serviço, sem dor de cabeça. Estamos indicando a todos os amigos.”</p><em><b>Mariana Barros</b>Avaliação no Google</em></div>
+      <div class="quote rv rv-d2"><div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div><p>“Fui muito bem atendida. Profissionais que eu indico. Agora tenho minha piscina dos sonhos.”</p><em><b>Rafaela Fendler</b>Avaliação no Google</em></div>
+    </div>
+    <div class="gl rv"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>Avaliações públicas de clientes no <a href="https://www.google.com/search?q=Minas+Brasil+Piscinas+Belo+Horizonte" target="_blank" rel="noopener">perfil da empresa no Google</a></div>
+  </div>
+</section>
+
+<!-- ============ EMPRESA + CONTATO ============ -->
+<section id="contato">
+  <div class="bg"><img src="assets/hero2.jpg" alt="" loading="lazy"></div>
+  <div class="wrap">
+    <div>
+      <div class="label rv" style="color:var(--sun-300)">A empresa</div>
+      <h2 class="split">peça seu orçamento.</h2>
+      <p class="lead rv rv-d2">Conte o que a piscina precisa. Respondemos pelo WhatsApp de segunda a sexta, das 8h às 18h.</p>
+      <div class="sobre rv rv-d3">
+        <p>Somos uma empresa de piscinas de Belo Horizonte, no bairro Dona Clara. Fazemos limpeza, manutenção, construção, reforma, aquecimento, iluminação, automação e casa de máquinas, em BH e região.</p>
+        <p>O combinado é simples: preço fechado antes de começar, prazo dito e cumprido, piscina entregue do jeito que foi acertado. Se algo sair do previsto, você fica sabendo antes, não depois.</p>
+      </div>
+      <div class="lines rv rv-d4">
+        <a href="https://wa.me/5531993515020" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>(31) 99351-5020 · WhatsApp</a>
+        <a href="https://maps.google.com/maps?q=Rua+Zenita+de+Souza,+138,+Dona+Clara,+Belo+Horizonte" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Rua Zenita de Souza, 138, Dona Clara, Belo Horizonte, MG</a>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Segunda a sexta, das 8h às 18h</span>
+        <a href="https://www.instagram.com/minasbrasilpiscinas/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>@minasbrasilpiscinas</a>
+      </div>
+    </div>
+    <form class="form rv rv-d2" id="qform" novalidate>
+      <h3>Ou preencha aqui e envie direto pelo WhatsApp</h3>
+      <p>A mensagem sai pronta no seu WhatsApp. Sem cadastro.</p>
+      <div class="f"><label for="fn">Nome</label><input id="fn" name="nome" type="text" autocomplete="name" placeholder="Como podemos te chamar" required><span class="err">Digite seu nome.</span></div>
+      <div class="f"><label for="fc">Bairro e cidade</label><input id="fc" name="local" type="text" autocomplete="address-level2" placeholder="Ex.: Dona Clara, BH" required><span class="err">Informe o bairro e a cidade.</span></div>
+      <div class="f2">
+        <div class="f"><label for="fp">Tipo de piscina</label><select id="fp" name="piscina"><option>Alvenaria com pastilhas</option><option>Vinil</option><option>Fibra</option><option>Não sei</option></select></div>
+        <div class="f"><label for="ft">O que você precisa</label><select id="ft" name="tipo"><option>Limpeza e manutenção</option><option>Construção</option><option>Reforma</option><option>Aquecimento</option><option>Iluminação</option><option>Automação</option><option>Casa de máquinas</option><option>Condomínio</option></select></div>
+      </div>
+      <div class="f"><label for="fm">Mensagem</label><textarea id="fm" name="msg" placeholder="Ex.: piscina de 8x4, água verde há duas semanas"></textarea></div>
+      <button type="submit" class="pill pill-wa pill-lg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.7.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Fazer meu orçamento agora</button>
+      <div class="tiny">Seus dados vão direto para o nosso WhatsApp. Não guardamos nem compartilhamos com terceiros.</div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div><img src="assets/logo_color.png" alt="Minas Brasil Piscinas"><span>Limpeza, manutenção, reforma e automação de piscinas em Belo Horizonte. Rua Zenita de Souza, 138, Dona Clara.</span></div>
+      <div><b>Contato</b><a href="https://wa.me/5531993515020" target="_blank" rel="noopener">WhatsApp (31) 99351-5020</a><a href="https://www.instagram.com/minasbrasilpiscinas/" target="_blank" rel="noopener">Instagram</a><span style="display:block;padding:3px 0">Seg a sex, 8h às 18h</span></div>
+      <div><b>Serviços</b><a href="#servicos">Limpeza e manutenção</a><a href="#servicos">Construção e reforma</a><a href="#servicos">Aquecimento</a><a href="#servicos">Iluminação</a><a href="#servicos">Automação</a><a href="#servicos">Casa de máquinas</a></div>
+    </div>
+    <div class="bottom"><span>© <span id="yr"></span> Minas Brasil Piscinas. Todos os direitos reservados.</span><span>Atendimento em Belo Horizonte e região.</span></div>
+  </div>
+</footer>
+
+<a id="wa-fab" href="https://wa.me/5531993515020?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Minas%20Brasil%20Piscinas%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.7.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+</a>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  gsap.registerPlugin(ScrollTrigger);
+  var $=function(s,c){return (c||document).querySelector(s)}, $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+  var fine=matchMedia('(hover:hover) and (pointer:fine)').matches, desk=innerWidth>900;
+  document.documentElement.classList.add('js');
+  $('#yr').textContent=new Date().getFullYear();
+  var WA='https://wa.me/5531993515020?text=';
+
+  /* ---- split headlines into masked words ---- */
+  function splitWords(node){
+    Array.prototype.slice.call(node.childNodes).forEach(function(n){
+      if(n.nodeType===3){var frag=document.createDocumentFragment();n.textContent.split(/(\s+)/).forEach(function(part){if(!part)return;if(/^\s+$/.test(part)){frag.appendChild(document.createTextNode(' '));return}var o=document.createElement('span');o.className='wl';var i=document.createElement('span');i.textContent=part;o.appendChild(i);frag.appendChild(o)});node.replaceChild(frag,n)}
+      else if(n.nodeType===1&&n.tagName!=='BR'){splitWords(n)}
+    });
+  }
+  $$('.split').forEach(splitWords);
+
+  /* ================= INTRO ================= */
+  var nav=$('#nav');
+  function startPage(){
+    nav.classList.add('in','brand-on');
+    $('#glow').classList.add('in');
+    var tl=gsap.timeline();
+    tl.to('#hero .label',{opacity:1,duration:.7},0)
+      .to('#hero h1 .l span',{y:0,duration:1.1,ease:'expo.out',stagger:.1},.05)
+      .to('#hero .sub',{opacity:1,duration:.8},.45)
+      .to('#hero .cta',{opacity:1,duration:.8},.6)
+      .to('#hframe',{opacity:1,y:0,scale:1,duration:1.2,ease:'expo.out'},.25)
+      .to('#hmeta',{opacity:1,duration:.8},.9)
+      .add(function(){$('#wa-fab').classList.add('on')},1.2);
+  }
+  (function intro(){
+    var L=$('#loader'),lg=$('#lg');
+    var tl=gsap.timeline({onComplete:function(){L.remove()}});
+    tl.fromTo('#loader .em',{opacity:0,yPercent:18},{opacity:1,yPercent:0,duration:.8,ease:'expo.out'},0)
+      .fromTo('#loader .arc',{opacity:0,yPercent:22},{opacity:1,yPercent:0,duration:.7,ease:'expo.out'},.35)
+      .fromTo('#loader .mi',{opacity:0,xPercent:-6},{opacity:1,xPercent:0,duration:.6,ease:'expo.out'},.7)
+      .fromTo('#loader .br',{opacity:0,xPercent:6},{opacity:1,xPercent:0,duration:.6,ease:'expo.out'},.8)
+      .fromTo('#loader .pi',{opacity:0,yPercent:30},{opacity:1,yPercent:0,duration:.5,ease:'power2.out'},1.0)
+      .add(function(){
+        var r=$('#navlogo').getBoundingClientRect(),cur=lg.getBoundingClientRect();
+        lg.style.transform='none';lg.style.left=cur.left+'px';lg.style.top=cur.top+'px';lg.style.width=cur.width+'px';
+        if(r.width>0){gsap.to(lg,{left:r.left,top:r.top,width:r.width,duration:.9,ease:'expo.inOut'})}
+        else{gsap.to(lg,{opacity:0,duration:.4})}
+      },1.75)
+      .to('#loader .pn.top',{yPercent:-100,duration:.9,ease:'expo.inOut'},1.85)
+      .to('#loader .pn.bot',{yPercent:100,duration:.9,ease:'expo.inOut'},1.85)
+      .add(startPage,2.0)
+      .to(lg,{opacity:0,duration:.2},2.7);
+  })();
+
+  /* ================= NAV ================= */
+  var lastY=0;
+  ScrollTrigger.create({start:0,end:'max',onUpdate:function(s){var y=s.scroll();nav.classList.toggle('solid',y>40);if(y>lastY+6&&y>300&&!document.body.classList.contains('mopen'))nav.classList.add('hide');else if(y<lastY-6)nav.classList.remove('hide');lastY=y}});
+  $$('section.light').forEach(function(sec){ScrollTrigger.create({trigger:sec,start:'top 66px',end:'bottom 66px',onToggle:function(s){nav.classList.toggle('on-light',s.isActive)}})});
+  var burger=$('#burger'),mob=$('#mob');
+  burger.addEventListener('click',function(){var o=document.body.classList.toggle('mopen');mob.classList.toggle('open',o);burger.setAttribute('aria-expanded',o)});
+  $$('#mob a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('mopen');mob.classList.remove('open')})});
+
+  /* ================= REVEALS ================= */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  $$('.rv,.quote').forEach(function(el){io.observe(el)});
+  $$('.split').forEach(function(h){ScrollTrigger.create({trigger:h,start:'top 88%',once:true,onEnter:function(){gsap.to($$('.wl>span',h),{y:0,duration:1,ease:'expo.out',stagger:.045})}})});
+
+  /* ================= REFORMA SCRUBBER ================= */
+  var imgs=$$('#fr img'),srng=$('#srng'),selo=$('#selo'),scount=$('#scount'),ets=$$('.et'),cur=0;
+  function loadAll(){imgs.forEach(function(im){if(im.dataset.src){im.src=im.dataset.src;delete im.dataset.src}})}
+  ScrollTrigger.create({trigger:'#reforma',start:'top 120%',once:true,onEnter:loadAll});
+  function setFrame(i,fromRange){
+    i=Math.max(0,Math.min(imgs.length-1,i));cur=i;
+    imgs.forEach(function(im,k){im.classList.toggle('on',k===i)});
+    if(!fromRange)srng.value=i;
+    scount.textContent='Foto '+(i+1)+' de '+imgs.length;
+    var last=i===imgs.length-1;
+    selo.textContent=i<5?'Antes':(last?'Depois':'Durante a obra');
+    selo.classList.toggle('fim',last);
+    ets.forEach(function(et){var a=+et.dataset.from,b=+et.dataset.to;et.classList.toggle('on',i>=a&&i<=b);et.classList.toggle('done',i>b)});
+  }
+  srng.addEventListener('input',function(){setFrame(+srng.value,true)});
+  $('#sprev').addEventListener('click',function(){setFrame(cur-1)});
+  $('#snext').addEventListener('click',function(){setFrame(cur+1)});
+  var stage=$('#stage'),sx=null;
+  stage.addEventListener('pointerdown',function(e){if(e.target.closest('.scrub'))return;sx=e.clientX});
+  stage.addEventListener('pointerup',function(e){if(sx===null)return;var d=e.clientX-sx;if(Math.abs(d)>30)setFrame(cur+(d<0?1:-1));sx=null});
+  if(desk){ScrollTrigger.create({trigger:'#reforma',start:'top 60%',end:'bottom 70%',scrub:.4,onUpdate:function(s){if(!stage.matches(':hover'))setFrame(Math.round(s.progress*(imgs.length-1)))}})}
+
+  /* ================= TIMELINE + FICHA ================= */
+  var steps=$$('#visita .step'),prog=$('#tlprog'),tlEl=$('#tl');
+  function markStep(idx){
+    steps.forEach(function(st,k){st.classList.toggle('on',k<=idx)});
+    var ok=[];steps.slice(0,idx+1).forEach(function(st){(st.dataset.ok||'').split(' ').forEach(function(id){if(id)ok.push(id)})});
+    $$('#ficha li').forEach(function(li){li.classList.toggle('ok',ok.indexOf(li.id)>-1)});
+  }
+  steps.forEach(function(st,k){ScrollTrigger.create({trigger:st,start:'top 72%',onEnter:function(){markStep(k)},onLeaveBack:function(){markStep(k-1)}})});
+  ScrollTrigger.create({trigger:tlEl,start:'top 72%',end:'bottom 72%',scrub:.3,onUpdate:function(s){prog.style.height=(s.progress*100)+'%'}});
+
+  /* ================= CALCULADORA ================= */
+  var svgNS='http://www.w3.org/2000/svg';
+  function el(t,a){var e=document.createElementNS(svgNS,t);for(var k in a)e.setAttribute(k,a[k]);return e}
+  (function(){var g=$('#pgrid');for(var x=20;x<=500;x+=40)g.appendChild(el('line',{x1:x,y1:20,x2:x,y2:380}));for(var y=20;y<=380;y+=40)g.appendChild(el('line',{x1:20,y1:y,x2:500,y2:y}))})();
+  var cl=$('#cl'),cw=$('#cw'),cd=$('#cd'),clo=$('#clo'),cwo=$('#cwo'),cdo=$('#cdo'),cll=$('#cll'),cwwrap=$('#cwwrap');
+  var rlit=$('#rlit'),rline=$('#rline'),rcls=$('#rcls'),rsug=$('#rsug'),calccta=$('#calccta');
+  var shown={v:0};
+  function f1(n){return n.toFixed(1).replace('.',',')}
+  function f2(n){return n.toFixed(2).replace('.',',')}
+  function fmtN(n){return Math.round(n).toLocaleString('pt-BR')}
+  function shape(){return $('input[name=shape]:checked').value}
+  function use(){return $('input[name=use]:checked').value}
+  function calc(){
+    var s=shape(),L=+cl.value,W=+cw.value,D=+cd.value,m3,dimtxt;
+    cll.textContent=s==='round'?'Diâmetro':'Comprimento';
+    cwwrap.style.display=s==='round'?'none':'';
+    clo.textContent=f1(L)+' m';cwo.textContent=f1(W)+' m';cdo.textContent=f2(D)+' m';
+    if(s==='rect'){m3=L*W*D;dimtxt=f1(L)+' x '+f1(W)+' m'}
+    else if(s==='round'){m3=Math.PI*(L/2)*(L/2)*D;dimtxt=f1(L)+' m de diâmetro'}
+    else{m3=Math.PI*(L/2)*(W/2)*D;dimtxt=f1(L)+' x '+f1(W)+' m'}
+    var lit=m3*1000;
+    rline.textContent=dimtxt+' · '+f2(D)+' m de profundidade · '+f1(m3)+' m³';
+    var cls=lit<20000?'Piscina pequena':(lit<50000?'Piscina média':'Piscina grande');
+    rcls.textContent=cls;
+    rsug.textContent=use()==='cond'?'plano de condomínio, 2 ou mais visitas por semana':(lit<50000?'visita semanal na manutenção':'visita semanal ou mais, conforme o uso');
+    gsap.to(shown,{v:lit,duration:.5,ease:'power2.out',onUpdate:function(){rlit.textContent=fmtN(shown.v)}});
+    var msg='Olá, vim pelo site da Minas Brasil Piscinas. Minha piscina '+(s==='rect'?'retangular':(s==='round'?'redonda':'oval'))+' tem cerca de '+fmtN(lit)+' litros ('+dimtxt+', '+f2(D)+' m de profundidade)'+(use()==='cond'?', em condomínio':'')+'. Quero um orçamento.';
+    calccta.href=WA+encodeURIComponent(msg);
+    draw(s,L,W);
+  }
+  var ps=$('#pshape'),pd=$('#pdims');
+  function draw(s,L,W){
+    var maxW=380,maxH=300,cx=260,cy=200;
+    var w=s==='round'?L:L, h=s==='round'?L:W;
+    var k=Math.min(maxW/w,maxH/h);
+    var pw=w*k,ph=h*k;
+    ps.innerHTML='';pd.innerHTML='';
+    var node;
+    if(s==='rect')node=el('rect',{x:cx-pw/2,y:cy-ph/2,width:pw,height:ph,rx:8,'class':'wat'});
+    else if(s==='round')node=el('circle',{cx:cx,cy:cy,r:pw/2,'class':'wat'});
+    else node=el('ellipse',{cx:cx,cy:cy,rx:pw/2,ry:ph/2,'class':'wat'});
+    ps.appendChild(node);
+    var yb=cy+ph/2+22;
+    pd.appendChild(el('line',{'class':'dimline',x1:cx-pw/2,y1:yb,x2:cx+pw/2,y2:yb}));
+    var t=el('text',{'class':'dim',x:cx,y:yb+16,'text-anchor':'middle'});t.textContent=f1(L)+' m';pd.appendChild(t);
+    if(s!=='round'){var xr=cx+pw/2+22;pd.appendChild(el('line',{'class':'dimline',x1:xr,y1:cy-ph/2,x2:xr,y2:cy+ph/2}));var t2=el('text',{'class':'dim',x:xr+8,y:cy+4});t2.textContent=f1(W)+' m';pd.appendChild(t2)}
+  }
+  [cl,cw,cd].forEach(function(i){i.addEventListener('input',calc)});
+  $$('input[name=shape],input[name=use]').forEach(function(i){i.addEventListener('change',calc)});
+  calc();
+
+  /* ================= FORM -> WHATSAPP ================= */
+  var form=$('#qform');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();var bad=false;
+    ['fn','fc'].forEach(function(id){var i=$('#'+id),f=i.closest('.f');var v=i.value.trim().length>1;f.classList.toggle('bad',!v);if(!v&&!bad){bad=true;i.focus()}});
+    if(bad)return;
+    var msg='Olá, vim pelo site e quero um orçamento.\nNome: '+$('#fn').value.trim()+'\nLocal: '+$('#fc').value.trim()+'\nPiscina: '+$('#fp').value+'\nPreciso de: '+$('#ft').value+(($('#fm').value.trim())?'\nDetalhes: '+$('#fm').value.trim():'');
+    window.open(WA+encodeURIComponent(msg),'_blank','noopener');
+  });
+  ['fn','fc'].forEach(function(id){$('#'+id).addEventListener('input',function(){this.closest('.f').classList.remove('bad')})});
+
+  /* magnetic hero CTA (desktop only) */
+  if(fine){var m=$('#herocta');m.addEventListener('pointermove',function(e){var r=m.getBoundingClientRect();gsap.to(m,{x:(e.clientX-r.left-r.width/2)*.18,y:(e.clientY-r.top-r.height/2)*.28,duration:.4,ease:'power2.out'})});m.addEventListener('pointerleave',function(){gsap.to(m,{x:0,y:0,duration:.6,ease:'elastic.out(1,.5)'})})}
+})();
+</script>
+</body>
+</html>
