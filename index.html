@@ -944,6 +944,11 @@ void main() {
 <script src="vendor/ScrollTrigger.min.js"></script>
 <script>
 (function(){
+  /* sempre abrir pelo hero: sem restaurar rolagem, sem pular para âncora */
+  if('scrollRestoration' in history)history.scrollRestoration='manual';
+  if(location.hash)history.replaceState(null,'',location.pathname+location.search);
+  window.scrollTo(0,0);
+  addEventListener('pageshow',function(){window.scrollTo(0,0)});
   gsap.registerPlugin(ScrollTrigger);
   var $=function(s,c){return (c||document).querySelector(s)}, $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
   var fine=matchMedia('(hover:hover) and (pointer:fine)').matches, desk=innerWidth>900, reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
