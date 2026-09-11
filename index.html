@@ -97,8 +97,10 @@ section{position:relative}
 @media(max-width:960px){#nav ul,#nav .pill{display:none}#burger{display:flex}body.mopen #burger i:nth-child(1){transform:translateY(8px) rotate(45deg)}body.mopen #burger i:nth-child(2){opacity:0}body.mopen #burger i:nth-child(3){transform:translateY(-8px) rotate(-45deg)}body.mopen #nav{color:var(--mist)}}
 
 /* ============ HERO (split) ============ */
-#hero{min-height:100svh;display:flex;align-items:center;padding:120px 0 64px;overflow:hidden;isolation:isolate;background:radial-gradient(120% 90% at 80% 20%,var(--ink-3),var(--ink) 55%,var(--ink-deep))}
-#hero .glow{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.55}
+#hero{min-height:100svh;display:flex;align-items:center;padding:120px 0 64px;overflow:hidden;isolation:isolate;background:var(--ink)}
+#silk{position:absolute;inset:0;width:100%;height:100%;z-index:-3;display:block}
+#hero .scrim{position:absolute;inset:0;z-index:-2;pointer-events:none;background:linear-gradient(90deg,rgba(3,35,58,.88) 0%,rgba(3,35,58,.62) 45%,rgba(3,35,58,.25) 100%),linear-gradient(180deg,rgba(3,35,58,.55),transparent 30%,transparent 70%,var(--ink) 100%)}
+#hero .glow{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.35}
 #hero .glow i{position:absolute;border-radius:50%;filter:blur(80px);opacity:0;will-change:transform}
 #hero .glow .g1{width:56vw;height:56vw;max-width:760px;max-height:760px;right:-8%;top:-10%;background:radial-gradient(circle,rgba(0,158,226,.5),rgba(10,127,191,.22) 40%,transparent 70%)}
 #hero .glow .g2{width:40vw;height:40vw;max-width:520px;max-height:520px;left:-12%;bottom:-18%;background:radial-gradient(circle,rgba(247,200,65,.28),transparent 65%)}
@@ -121,7 +123,7 @@ section{position:relative}
 .hframe .tag{position:absolute;left:18px;bottom:18px;z-index:2;background:rgba(3,35,58,.72);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 16px}
 .hframe .tag b{display:block;font-size:15px;color:#fff;letter-spacing:-.01em}
 .hframe .tag span{font-size:12.5px;color:var(--steel)}
-@media(max-width:900px){#hero{padding-top:104px}#hero .wrap{grid-template-columns:1fr}.hframe{max-width:440px;margin-left:0}#hero h1{font-size:clamp(36px,9.6vw,52px)}#hero .meta{gap:18px}}
+@media(max-width:900px){#hero .scrim{background:linear-gradient(180deg,rgba(3,35,58,.9) 0%,rgba(3,35,58,.7) 60%,var(--ink) 100%)}#hero{padding-top:104px}#hero .wrap{grid-template-columns:1fr}.hframe{max-width:440px;margin-left:0}#hero h1{font-size:clamp(36px,9.6vw,52px)}#hero .meta{gap:18px}}
 
 /* ============ SERVIÇOS ============ */
 #servicos{padding:clamp(80px,11vw,140px) 0}
@@ -145,18 +147,18 @@ section{position:relative}
 #reforma h2{font-size:clamp(36px,5.2vw,68px);margin:14px 0 18px;max-width:14ch}
 .rf{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);margin-top:48px;align-items:start}
 .rf>*{min-width:0}
-.stage{position:relative;max-width:560px;margin-inline:auto;width:100%}
-.stage .fr{position:relative;aspect-ratio:3/4;border-radius:var(--r);overflow:hidden;background:var(--ink-3);border:1px solid var(--line-d);box-shadow:0 40px 80px -40px rgba(0,0,0,.7)}
-.stage .fr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .22s ease}
-.stage .fr img.on{opacity:1}
-.stage .fr .selo{position:absolute;left:16px;top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:8px 12px;border-radius:999px;background:rgba(3,35,58,.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);color:#fff;transition:background .3s,color .3s}
-.stage .fr .selo.fim{background:var(--sun);color:#1A1400;border-color:transparent}
-.stage .scrub{margin-top:18px;display:flex;align-items:center;gap:12px}
-.stage .scrub button{width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);display:grid;place-items:center;flex:none;transition:background .2s}
-.stage .scrub button:hover{background:rgba(255,255,255,.1)}
-.stage .scrub button svg{width:16px;height:16px}
-.stage .scrub input[type=range]{flex:1;accent-color:var(--sun);height:44px;cursor:pointer}
-.stage .cap{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-top:6px}
+.ba{max-width:560px;margin-inline:auto;width:100%}
+.ba-fr{position:relative;aspect-ratio:3/4;border-radius:var(--r);overflow:hidden;background:var(--ink-3);border:1px solid var(--line-d);box-shadow:0 40px 80px -40px rgba(0,0,0,.7);cursor:ew-resize;touch-action:pan-y;user-select:none}
+.ba-fr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba-before{position:absolute;inset:0;clip-path:inset(0 50% 0 0);will-change:clip-path}
+.ba-line{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;transform:translateX(-50%);box-shadow:0 0 0 1px rgba(0,0,0,.25)}
+.ba-knob{position:absolute;left:50%;top:50%;width:46px;height:46px;border-radius:50%;background:#fff;color:var(--ink);transform:translate(-50%,-50%);display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.ba-knob svg{width:20px;height:20px}
+.ba-fr .selo{position:absolute;top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:8px 12px;border-radius:999px;background:rgba(3,35,58,.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);color:#fff}
+.ba-fr .selo.l{left:16px}.ba-fr .selo.r{right:16px}
+.ba-fr .selo.fim{background:var(--sun);color:#1A1400;border-color:transparent}
+.ba-rng{width:100%;accent-color:var(--sun);height:44px;cursor:pointer;margin-top:12px}
+.ba .cap{display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-top:2px}
 .etapas{position:sticky;top:96px}
 .etapas p.lead{margin-bottom:26px}
 .et{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:16px 0;border-top:1px solid var(--line-d);opacity:.4;transition:opacity .4s}
@@ -365,6 +367,8 @@ footer .bottom{margin-top:34px;padding-top:20px;border-top:1px solid var(--line-
 
 <!-- ============ HERO ============ -->
 <section id="hero" class="dark">
+  <canvas id="silk" aria-hidden="true"></canvas>
+  <div class="scrim"></div>
   <div class="grain"></div>
   <div class="glow" id="glow"><i class="g1"></i><i class="g2"></i></div>
   <div class="wrap">
@@ -415,32 +419,26 @@ footer .bottom{margin-top:34px;padding-top:20px;border-top:1px solid var(--line-
 
 <div class="seam"></div>
 
-<!-- ============ REFORMA (scrubber) ============ -->
+<!-- ============ REFORMA (antes e depois) ============ -->
 <section id="reforma" class="dark">
   <div class="wrap">
     <div class="label rv">Obra real</div>
     <h2 class="split">uma reforma real,<br>sem filtro.</h2>
     <div class="rf">
-      <div class="stage rv" id="stage">
-        <div class="fr" id="fr">
-          <img src="assets/seq01.jpg" alt="Piscina antes da reforma, com água verde e fibra manchada" class="on">
-          <img data-src="assets/seq02.jpg" alt=""><img data-src="assets/seq03.jpg" alt=""><img data-src="assets/seq04.jpg" alt=""><img data-src="assets/seq05.jpg" alt=""><img data-src="assets/seq06.jpg" alt=""><img data-src="assets/seq07.jpg" alt=""><img data-src="assets/seq08.jpg" alt=""><img data-src="assets/seq09.jpg" alt=""><img data-src="assets/seq10.jpg" alt=""><img data-src="assets/seq11.jpg" alt=""><img data-src="assets/seq12.jpg" alt=""><img data-src="assets/seq13.jpg" alt=""><img data-src="assets/seq14.jpg" alt=""><img data-src="assets/seq15.jpg" alt=""><img data-src="assets/seq16.jpg" alt="Piscina depois da reforma, azul, cheia e com cascata">
-          <span class="selo" id="selo">Antes</span>
+      <div class="ba rv" id="ba">
+        <div class="ba-fr">
+          <img class="ba-after" src="assets/depois.jpg" alt="Piscina depois da reforma, azul, cheia e com cascata" loading="lazy">
+          <div class="ba-before" id="babefore"><img src="assets/antes.jpg" alt="Piscina antes da reforma, com água verde e fibra manchada" loading="lazy"></div>
+          <div class="ba-line" id="baline"><span class="ba-knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l-5 6 5 6M15 6l5 6-5 6"/></svg></span></div>
+          <span class="selo l">Antes</span><span class="selo r fim">Depois</span>
         </div>
-        <div class="scrub">
-          <button type="button" id="sprev" aria-label="Foto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></button>
-          <input type="range" id="srng" min="0" max="15" value="0" step="1" aria-label="Etapa da reforma">
-          <button type="button" id="snext" aria-label="Próxima foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg></button>
-        </div>
-        <div class="cap"><span>Como chegou</span><span id="scount">Foto 1 de 16</span><span>Como foi entregue</span></div>
+        <input type="range" class="ba-rng" id="barng" min="0" max="100" value="50" aria-label="Comparar antes e depois">
+        <div class="cap"><span>Água verde, fibra manchada</span><span>Acabamento novo, água tratada</span></div>
       </div>
-      <div class="etapas rv rv-d2" id="etapas">
-        <p class="lead">Foto de como a piscina chegou e de como foi entregue. Mesmo local, mesma piscina. Arraste a barra para acompanhar a obra.</p>
-        <div class="et on" data-from="0" data-to="4"><i>1</i><div><h3>Como a piscina chegou</h3><p>Água verde, fibra manchada, piscina parada há semanas.</p></div></div>
-        <div class="et" data-from="5" data-to="6"><i>2</i><div><h3>Esvaziamento e limpeza</h3><p>Piscina esvaziada, fibra escovada e avaliada ponto a ponto.</p></div></div>
-        <div class="et" data-from="7" data-to="7"><i>3</i><div><h3>Reparo e novo acabamento</h3><p>Estrutura reparada e acabamento novo aplicado antes de encher.</p></div></div>
-        <div class="et" data-from="8" data-to="10"><i>4</i><div><h3>Água nova e tratada</h3><p>Enchimento, cascata instalada, pH e cloro balanceados.</p></div></div>
-        <div class="et" data-from="11" data-to="15"><i>5</i><div><h3>Entrega</h3><p>Acabamento novo, água azul e limpa, piscina em uso.</p></div></div>
+      <div class="etapas rv rv-d2">
+        <p class="lead">Foto de como a piscina chegou e de como foi entregue. Mesmo local, mesma piscina. Arraste o divisor para comparar.</p>
+        <div class="et on"><i>A</i><div><h3>Antes</h3><p>Água verde, fibra manchada, piscina parada há semanas.</p></div></div>
+        <div class="et on"><i>D</i><div><h3>Depois</h3><p>Acabamento novo, água azul e limpa, cascata instalada, piscina em uso.</p></div></div>
         <div style="margin-top:26px"><a class="pill pill-wa pill-lg" href="https://wa.me/5531993515020?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento%20de%20reforma%20de%20piscina." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.7.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>Fazer meu orçamento agora</a></div>
       </div>
     </div>
@@ -642,6 +640,255 @@ footer .bottom{margin-top:34px;padding-top:20px;border-top:1px solid var(--line-
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.7.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
 </a>
 
+<script id="silk-fs" type="x-shader/x-fragment">
+// "Silk" — made with the 21st.dev Shader Builder
+// Packed WebGL1 uniforms (the shader exposes readable u_* aliases as macros).
+
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+
+uniform vec3 u_colors[8];
+uniform vec4 u_scene;      // resolution.xy, time, colour count
+uniform vec4 u_shape;      // scale, intensity, paramA, warp
+uniform vec4 u_surface;    // detail, contrast, brightness, saturation
+uniform vec4 u_finish;     // hue, vignette, blur, grain
+uniform vec4 u_transform;  // seed, rotation, drift, OKLab toggle
+uniform vec4 u_space;      // offset.xy, pointer.xy
+uniform vec4 u_cursor;
+
+#define u_resolution u_scene.xy
+#define u_time u_scene.z
+#define u_colorCount u_scene.w
+#define u_scale u_shape.x
+#define u_intensity u_shape.y
+#define u_paramA u_shape.z
+#define u_warp u_shape.w
+#define u_detail u_surface.x
+#define u_contrast u_surface.y
+#define u_brightness u_surface.z
+#define u_saturation u_surface.w
+#define u_hue u_finish.x
+#define u_vignette u_finish.y
+#define u_blur u_finish.z
+#define u_grain u_finish.w
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+#define u_seed u_transform.x
+#else
+#define u_seed mod(u_transform.x, 31.0)
+#endif
+#define u_rotate u_transform.y
+#define u_drift u_transform.z
+#define u_oklab u_transform.w
+#define u_offset u_space.xy
+#define u_mouse u_space.zw
+#define u_cursorPresence u_cursor.x
+#define u_cursorEffect u_cursor.y
+#define u_cursorStrength u_cursor.z
+#define u_cursorRadius u_cursor.w
+
+float hash21(vec2 p) {
+#ifndef GL_FRAGMENT_PRECISION_HIGH
+  p = mod(p, 31.0);
+#endif
+  p = fract(p * vec2(234.34, 435.345));
+  p += dot(p, p + 34.23);
+  return fract(p.x * p.y);
+}
+
+float grainHash(vec2 p) {
+  vec3 p3 = fract(vec3(p.xyx) * 0.1031);
+  p3 += dot(p3, p3.yzx + 33.33);
+  return fract((p3.x + p3.y) * p3.z);
+}
+
+vec2 hash22(vec2 p) {
+#ifndef GL_FRAGMENT_PRECISION_HIGH
+  p = mod(p, 31.0);
+#endif
+  float n = sin(dot(p, vec2(41.0, 289.0)));
+  return fract(vec2(15731.743, 7892.321) * n);
+}
+
+float noise(vec2 p) {
+  vec2 i = floor(p);
+  vec2 f = fract(p);
+  vec2 u = f * f * (3.0 - 2.0 * f);
+  return mix(
+    mix(hash21(i), hash21(i + vec2(1.0, 0.0)), u.x),
+    mix(hash21(i + vec2(0.0, 1.0)), hash21(i + vec2(1.0, 1.0)), u.x),
+    u.y);
+}
+
+float fbm(vec2 p) {
+  float v = 0.0;
+  float a = 0.5;
+  for (int i = 0; i < 5; i++) {
+    v += a * noise(p);
+    p = p * 2.03 + vec2(17.0, 9.2);
+    a *= 0.5;
+  }
+  return v;
+}
+
+vec3 srgbToLinear(vec3 c) {
+  return mix(c / 12.92, pow((c + 0.055) / 1.055, vec3(2.4)),
+    step(0.04045, c));
+}
+vec3 linearToSrgb(vec3 c) {
+  return mix(c * 12.92, 1.055 * pow(max(c, vec3(0.0)), vec3(1.0 / 2.4)) - 0.055,
+    step(0.0031308, c));
+}
+vec3 linToOklab(vec3 c) {
+  float l = 0.4122214708 * c.r + 0.5363325363 * c.g + 0.0514459929 * c.b;
+  float m = 0.2119034982 * c.r + 0.6806995451 * c.g + 0.1073969566 * c.b;
+  float s = 0.0883024619 * c.r + 0.2817188376 * c.g + 0.6299787005 * c.b;
+  l = pow(max(l, 0.0), 1.0 / 3.0);
+  m = pow(max(m, 0.0), 1.0 / 3.0);
+  s = pow(max(s, 0.0), 1.0 / 3.0);
+  return vec3(
+    0.2104542553 * l + 0.7936177850 * m - 0.0040720468 * s,
+    1.9779984951 * l - 2.4285922050 * m + 0.4505937099 * s,
+    0.0259040371 * l + 0.7827717662 * m - 0.8086757660 * s);
+}
+vec3 oklabToLin(vec3 c) {
+  float l = c.x + 0.3963377774 * c.y + 0.2158037573 * c.z;
+  float m = c.x - 0.1055613458 * c.y - 0.0638541728 * c.z;
+  float s = c.x - 0.0894841775 * c.y - 1.2914855480 * c.z;
+  l = l * l * l; m = m * m * m; s = s * s * s;
+  return vec3(
+    4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s,
+    -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s,
+    -0.0041960863 * l - 0.7034186147 * m + 1.7076147010 * s);
+}
+vec3 mixColour(vec3 a, vec3 b, float t) {
+  if (u_oklab > 0.5) {
+    vec3 la = linToOklab(srgbToLinear(a));
+    vec3 lb = linToOklab(srgbToLinear(b));
+    return clamp(linearToSrgb(oklabToLin(mix(la, lb, t))), 0.0, 1.0);
+  }
+  return mix(a, b, t);
+}
+
+vec3 palette(float x) {
+  float n = max(u_colorCount - 1.0, 1.0);
+  float f = clamp(x, 0.0, 1.0) * n;
+  vec3 col = u_colors[0];
+  for (int i = 0; i < 7; i++) {
+    if (float(i) < n)
+      col = mixColour(col, u_colors[i + 1],
+        smoothstep(0.0, 1.0, clamp(f - float(i), 0.0, 1.0)));
+  }
+  return col;
+}
+
+vec3 hueRotate(vec3 col, float a) {
+  const mat3 toYIQ = mat3(0.299, 0.596, 0.211,
+                          0.587, -0.274, -0.523,
+                          0.114, -0.322, 0.312);
+  const mat3 toRGB = mat3(1.0, 1.0, 1.0,
+                          0.956, -0.272, -1.106,
+                          0.621, -0.647, 1.703);
+  vec3 yiq = toYIQ * col;
+  float ca = cos(a), sa = sin(a);
+  yiq = vec3(yiq.x, yiq.y * ca - yiq.z * sa, yiq.y * sa + yiq.z * ca);
+  return toRGB * yiq;
+}
+
+vec3 shade(vec2 uv, vec2 p, float t) {
+  vec2 q = p * 1.6;
+  float amp = 0.25 + u_intensity * 0.85;
+  for (float i = 1.0; i < 5.0; i += 1.0) {
+    q.x += amp / i * cos(i * 2.4 * q.y + t * 0.8 + u_seed);
+    q.y += amp / i * cos(i * 1.7 * q.x + t * 0.6);
+  }
+  return palette(0.5 + 0.5 * sin(q.x + q.y));
+}
+
+void main() {
+  vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+  vec2 screenUv = uv;
+  vec2 p = (gl_FragCoord.xy - 0.5 * u_resolution.xy)
+    / min(u_resolution.x, u_resolution.y);
+  float cursorMask = 0.0;
+
+  if (u_cursorPresence > 0.001) {
+    vec2 cursor = (0.5 * u_mouse * u_resolution.xy)
+      / min(u_resolution.x, u_resolution.y);
+    vec2 cursorDelta = p - cursor;
+    if (u_cursorEffect < 0.5) {
+      p += cursor * u_cursorPresence * u_cursorStrength * 0.55;
+    } else {
+      float cursorDistance = length(cursorDelta);
+      vec2 cursorDirection = cursorDelta / max(cursorDistance, 0.0001);
+      cursorMask = u_cursorPresence
+        * (1.0 - smoothstep(0.0, u_cursorRadius, cursorDistance));
+      if (u_cursorEffect < 1.5) {
+        p -= cursorDirection * cursorMask * u_cursorStrength * 0.24;
+      } else if (u_cursorEffect < 2.5) {
+        float cursorAngle = cursorMask * u_cursorStrength * 2.2;
+        float cc = cos(cursorAngle), cs = sin(cursorAngle);
+        p = cursor + mat2(cc, -cs, cs, cc) * cursorDelta;
+      } else if (u_cursorEffect < 3.5) {
+        float ripple = sin(
+          cursorDistance / max(u_cursorRadius, 0.001) * 18.0 - u_time * 5.0);
+        p -= cursorDirection * ripple * cursorMask * u_cursorStrength * 0.07;
+      }
+    }
+  }
+
+  uv = p * min(u_resolution.x, u_resolution.y) / u_resolution.xy + 0.5;
+  p *= u_scale;
+  if (abs(u_rotate) > 0.0001) {
+    float cr = cos(u_rotate), sr = sin(u_rotate);
+    p = mat2(cr, -sr, sr, cr) * p;
+  }
+  p += u_offset;
+  if (u_drift > 0.0001)
+    p += u_drift * vec2(sin(u_time * 0.31), cos(u_time * 0.23));
+  if (u_warp > 0.0) {
+    p += u_warp * (vec2(
+      fbm(p * u_detail + u_seed),
+      fbm(p * u_detail + vec2(5.2, 1.3))) - 0.5);
+  }
+  vec3 col;
+  if (u_blur > 0.0) {
+    float e = u_blur;
+    float pe = e * u_scale;
+    vec2 uvE = vec2(e) * min(u_resolution.x, u_resolution.y) / u_resolution.xy;
+    col  = shade(uv, p, u_time) * 0.36;
+    col += shade(uv + vec2(uvE.x, 0.0), p + vec2(pe, 0.0), u_time) * 0.16;
+    col += shade(uv - vec2(uvE.x, 0.0), p - vec2(pe, 0.0), u_time) * 0.16;
+    col += shade(uv + vec2(0.0, uvE.y), p + vec2(0.0, pe), u_time) * 0.16;
+    col += shade(uv - vec2(0.0, uvE.y), p - vec2(0.0, pe), u_time) * 0.16;
+  } else {
+    col = shade(uv, p, u_time);
+  }
+  if (abs(u_contrast - 1.0) > 0.0001)
+    col = (col - 0.5) * u_contrast + 0.5;
+  if (abs(u_saturation - 1.0) > 0.0001) {
+    float luma = dot(col, vec3(0.299, 0.587, 0.114));
+    col = mix(vec3(luma), col, u_saturation);
+  }
+  if (abs(u_hue) > 0.0001)
+    col = hueRotate(col, u_hue);
+  if (abs(u_brightness) > 0.0001)
+    col += u_brightness;
+  if (u_vignette > 0.0001) {
+    float vd = length(screenUv - 0.5) * 1.41421356;
+    col *= 1.0 - u_vignette * smoothstep(0.35, 1.0, vd);
+  }
+  if (u_cursorPresence > 0.001 && u_cursorEffect > 3.5)
+    col += (vec3(0.18) + col * 0.12) * cursorMask * u_cursorStrength;
+  if (u_grain > 0.0001)
+    col += (grainHash(
+      gl_FragCoord.xy + vec2(u_seed * 17.0, u_seed * 31.0)) - 0.5) * u_grain;
+  gl_FragColor = vec4(clamp(col, 0.0, 1.0), 1.0);
+}
+
+</script>
 <script src="vendor/gsap.min.js"></script>
 <script src="vendor/ScrollTrigger.min.js"></script>
 <script>
@@ -696,6 +943,41 @@ footer .bottom{margin-top:34px;padding-top:20px;border-top:1px solid var(--line-
       .to(lg,{opacity:0,duration:.2},2.7);
   })();
 
+  /* ================= SILK SHADER (hero background) ================= */
+  (function silk(){
+    var cv=document.getElementById('silk'); if(!cv) return;
+    var gl=cv.getContext('webgl',{antialias:false,alpha:false,premultipliedAlpha:false,powerPreference:'low-power'})||cv.getContext('experimental-webgl');
+    if(!gl){cv.remove();return}
+    var VS='attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
+    var FS=document.getElementById('silk-fs').textContent;
+    function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS)){console.warn(gl.getShaderInfoLog(o));return null}return o}
+    var vs=sh(gl.VERTEX_SHADER,VS),fs=sh(gl.FRAGMENT_SHADER,FS); if(!vs||!fs){cv.remove();return}
+    var pr=gl.createProgram();gl.attachShader(pr,vs);gl.attachShader(pr,fs);gl.linkProgram(pr);
+    if(!gl.getProgramParameter(pr,gl.LINK_STATUS)){console.warn(gl.getProgramInfoLog(pr));cv.remove();return}
+    gl.useProgram(pr);
+    var buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+    var loc=gl.getAttribLocation(pr,'a');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+    var U=function(n){return gl.getUniformLocation(pr,n)};
+    /* paleta da empresa (baixo -> alto): #021A2C, #04304F, #0A7FBF, #009EE2 */
+    var cols=[0x02,0x1A,0x2C, 0x04,0x30,0x4F, 0x0A,0x7F,0xBF, 0x00,0x9E,0xE2, 0,0,0, 0,0,0, 0,0,0, 0,0,0].map(function(v){return v/255});
+    gl.uniform3fv(U('u_colors'),new Float32Array(cols));
+    gl.uniform4f(U('u_shape'),1.26,0.28,0.50,0.00);
+    gl.uniform4f(U('u_surface'),2.40,1.11,0.00,1.00);
+    gl.uniform4f(U('u_finish'),0.00,0.00,0.000,0.05);
+    gl.uniform4f(U('u_transform'),1581.0,0.00,0.00,0.0);
+    gl.uniform4f(U('u_space'),0.0,0.0,0.0,0.0);
+    gl.uniform4f(U('u_cursor'),0.0,2.0,0.65,0.46);
+    var uScene=U('u_scene'),W=0,H=0;
+    function resize(){var d=Math.min(devicePixelRatio||1,2);if(innerWidth<700)d=Math.min(d,1.5);var w=Math.round(cv.clientWidth*d),h=Math.round(cv.clientHeight*d);if(w!==W||h!==H){W=w;H=h;cv.width=w;cv.height=h;gl.viewport(0,0,w,h)}}
+    var t0=performance.now(),raf=0,vis=true,inview=true;
+    function frame(now){raf=0;if(!vis||!inview)return;resize();gl.uniform4f(uScene,W,H,(now-t0)/1000*0.76,4.0);gl.drawArrays(gl.TRIANGLES,0,3);raf=requestAnimationFrame(frame)}
+    function kick(){if(!raf&&vis&&inview)raf=requestAnimationFrame(frame)}
+    document.addEventListener('visibilitychange',function(){vis=!document.hidden;kick()});
+    new IntersectionObserver(function(es){inview=es[0].isIntersecting;kick()},{threshold:0}).observe(cv);
+    addEventListener('resize',resize);
+    kick();
+  })();
+
   /* ================= NAV ================= */
   var lastY=0;
   ScrollTrigger.create({start:0,end:'max',onUpdate:function(s){var y=s.scroll();nav.classList.toggle('solid',y>40);if(y>lastY+6&&y>300&&!document.body.classList.contains('mopen'))nav.classList.add('hide');else if(y<lastY-6)nav.classList.remove('hide');lastY=y}});
@@ -709,27 +991,22 @@ footer .bottom{margin-top:34px;padding-top:20px;border-top:1px solid var(--line-
   $$('.rv,.quote').forEach(function(el){io.observe(el)});
   $$('.split').forEach(function(h){ScrollTrigger.create({trigger:h,start:'top 88%',once:true,onEnter:function(){gsap.to($$('.wl>span',h),{y:0,duration:1,ease:'expo.out',stagger:.045})}})});
 
-  /* ================= REFORMA SCRUBBER ================= */
-  var imgs=$$('#fr img'),srng=$('#srng'),selo=$('#selo'),scount=$('#scount'),ets=$$('.et'),cur=0;
-  function loadAll(){imgs.forEach(function(im){if(im.dataset.src){im.src=im.dataset.src;delete im.dataset.src}})}
-  ScrollTrigger.create({trigger:'#reforma',start:'top 120%',once:true,onEnter:loadAll});
-  function setFrame(i,fromRange){
-    i=Math.max(0,Math.min(imgs.length-1,i));cur=i;
-    imgs.forEach(function(im,k){im.classList.toggle('on',k===i)});
-    if(!fromRange)srng.value=i;
-    scount.textContent='Foto '+(i+1)+' de '+imgs.length;
-    var last=i===imgs.length-1;
-    selo.textContent=i<5?'Antes':(last?'Depois':'Durante a obra');
-    selo.classList.toggle('fim',last);
-    ets.forEach(function(et){var a=+et.dataset.from,b=+et.dataset.to;et.classList.toggle('on',i>=a&&i<=b);et.classList.toggle('done',i>b)});
-  }
-  srng.addEventListener('input',function(){setFrame(+srng.value,true)});
-  $('#sprev').addEventListener('click',function(){setFrame(cur-1)});
-  $('#snext').addEventListener('click',function(){setFrame(cur+1)});
-  var stage=$('#stage'),sx=null;
-  stage.addEventListener('pointerdown',function(e){if(e.target.closest('.scrub'))return;sx=e.clientX});
-  stage.addEventListener('pointerup',function(e){if(sx===null)return;var d=e.clientX-sx;if(Math.abs(d)>30)setFrame(cur+(d<0?1:-1));sx=null});
-  if(desk){ScrollTrigger.create({trigger:'#reforma',start:'top 60%',end:'bottom 70%',scrub:.4,onUpdate:function(s){if(!stage.matches(':hover'))setFrame(Math.round(s.progress*(imgs.length-1)))}})}
+  /* ================= ANTES / DEPOIS ================= */
+  (function(){
+    var ba=$('#ba'),fr=$('.ba-fr',ba),before=$('#babefore'),line=$('#baline'),rng=$('#barng');
+    if(!ba)return;
+    var pos={v:50};
+    function apply(){before.style.clipPath='inset(0 '+(100-pos.v)+'% 0 0)';line.style.left=pos.v+'%'}
+    function setPos(v,animate){v=Math.max(0,Math.min(100,v));rng.value=Math.round(v);if(animate){gsap.to(pos,{v:v,duration:.5,ease:'power3.out',onUpdate:apply})}else{gsap.killTweensOf(pos);pos.v=v;apply()}}
+    var drag=false;
+    function fromEvent(e){var r=fr.getBoundingClientRect();return (e.clientX-r.left)/r.width*100}
+    fr.addEventListener('pointerdown',function(e){drag=true;fr.setPointerCapture(e.pointerId);setPos(fromEvent(e))});
+    fr.addEventListener('pointermove',function(e){if(drag)setPos(fromEvent(e))});
+    fr.addEventListener('pointerup',function(){drag=false});fr.addEventListener('pointercancel',function(){drag=false});
+    rng.addEventListener('input',function(){setPos(+rng.value)});
+    apply();
+    ScrollTrigger.create({trigger:ba,start:'top 75%',once:true,onEnter:function(){pos.v=100;apply();gsap.to(pos,{v:50,duration:1.6,ease:'power3.inOut',onUpdate:apply})}});
+  })();
 
   /* ================= TIMELINE + FICHA ================= */
   var steps=$$('#visita .step'),prog=$('#tlprog'),tlEl=$('#tl');
