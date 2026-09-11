@@ -96,7 +96,7 @@ section{position:relative}
 @media(max-width:960px){#nav ul,#nav .pill{display:none}#burger{display:flex}body.mopen #burger i:nth-child(1){transform:translateY(8px) rotate(45deg)}body.mopen #burger i:nth-child(2){opacity:0}body.mopen #burger i:nth-child(3){transform:translateY(-8px) rotate(-45deg)}body.mopen #nav{color:var(--mist)}}
 
 /* ============ HERO (split) ============ */
-#hero{min-height:100svh;display:flex;align-items:center;padding:120px 0 64px;overflow:hidden;isolation:isolate;background:var(--ink)}
+#hero{min-height:88svh;display:flex;align-items:center;padding:120px 0 80px;overflow:hidden;isolation:isolate;background:var(--ink)}
 #silk{position:absolute;inset:0;width:100%;height:100%;z-index:-3;display:block}
 #hero .scrim{position:absolute;inset:0;z-index:-2;pointer-events:none;background:linear-gradient(90deg,rgba(3,35,58,.88) 0%,rgba(3,35,58,.62) 45%,rgba(3,35,58,.25) 100%),linear-gradient(180deg,rgba(3,35,58,.55),transparent 30%,transparent 70%,var(--ink) 100%)}
 #hero .glow{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.35}
@@ -115,8 +115,6 @@ section{position:relative}
 #hero h1 .dim{color:rgba(230,238,246,.5)}
 #hero .sub{max-width:600px;font-size:clamp(17px,1.4vw,20px);color:rgba(230,238,246,.78);opacity:0}
 #hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;opacity:0}
-#hero .meta{margin-top:clamp(36px,5vh,64px);padding-top:20px;border-top:1px solid var(--line-d);display:flex;gap:28px;flex-wrap:wrap;font-size:14px;color:var(--steel);opacity:0}
-#hero .meta b{display:block;color:var(--mist);font-weight:600;font-size:15px}
 @media(max-width:900px){#hero .scrim{background:linear-gradient(180deg,rgba(3,35,58,.9) 0%,rgba(3,35,58,.7) 60%,var(--ink) 100%)}#hero{padding-top:104px}#hero h1{font-size:clamp(36px,9.6vw,52px)}#hero .meta{gap:18px}}
 
 /* ============ SERVIÇOS ============ */
@@ -379,11 +377,6 @@ footer .bottom{margin-top:34px;padding-top:20px;border-top:1px solid var(--line-
           Fazer meu orçamento agora
         </a>
         <a class="pill pill-ghost pill-lg" href="#manutencao">Ver como funciona a manutenção</a>
-      </div>
-      <div class="meta" id="hmeta">
-        <div><b>Seg a sex, 8h às 18h</b>resposta pelo WhatsApp</div>
-        <div><b>BH e região</b>casas e condomínios</div>
-        <div><b>Orçamento fechado</b>antes de começar</div>
       </div>
     </div>
   </div>
@@ -909,7 +902,6 @@ void main() {
       .to('#hero h1 .l span',{y:0,duration:1.1,ease:'expo.out',stagger:.1},.05)
       .to('#hero .sub',{opacity:1,duration:.8},.45)
       .to('#hero .cta',{opacity:1,duration:.8},.6)
-      .to('#hmeta',{opacity:1,duration:.8},.9)
       .add(function(){$('#wa-fab').classList.add('on')},1.2);
   }
   (function intro(){
